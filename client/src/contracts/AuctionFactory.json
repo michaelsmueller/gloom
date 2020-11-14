@@ -1,0 +1,1538 @@
+{
+  "contractName": "AuctionFactory",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "contract Auction",
+          "name": "auction",
+          "type": "address"
+        }
+      ],
+      "name": "AuctionCreated",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "auctionAddresses",
+      "outputs": [
+        {
+          "internalType": "contract Auction",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [],
+      "name": "wtf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [],
+      "name": "getAddresses",
+      "outputs": [
+        {
+          "internalType": "contract Auction[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [],
+      "name": "createAuction",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.2+commit.bacdbe57\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"contract Auction\",\"name\":\"auction\",\"type\":\"address\"}],\"name\":\"AuctionCreated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"auctionAddresses\",\"outputs\":[{\"internalType\":\"contract Auction\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"createAuction\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAddresses\",\"outputs\":[{\"internalType\":\"contract Auction[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"wtf\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/michaelmueller/code/consensys-bootcamp/gloom/contracts/AuctionFactory.sol\":\"AuctionFactory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/michaelmueller/code/consensys-bootcamp/gloom/contracts/Auction.sol\":{\"keccak256\":\"0xcea16f2d7addcaf0a06a2096e7d849d2a88f2f7a7acd99ab9f2aeadf0bfa9271\",\"urls\":[\"bzz-raw://b1883cbc2bdc65299057a92210790af3745f0da07d52ff92a4e52853c713ca8f\",\"dweb:/ipfs/Qme8vo527g1DLszBGjKXAPvA8Dz7VY8fqePBe5Lk2VyoQG\"]},\"/Users/michaelmueller/code/consensys-bootcamp/gloom/contracts/AuctionFactory.sol\":{\"keccak256\":\"0xa8c0623d669dabc476291be2caa0ac4c5de6a580f2304cd30b05789feae4003e\",\"urls\":[\"bzz-raw://c6a5acf6b823d239e8b6f2946bc1bcf76738feb55bd2b2b11a7b23a42ba1d440\",\"dweb:/ipfs/QmdArEXfn6rFdu757LaFgwy8iQZ6s431Fbf8EjmmLVaidY\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50600180546001600160a01b0319908116331791829055600280549091166001600160a01b03929092169190911790556103648061004f6000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c806336b6228814610051578063a39fac1214610075578063ca98362b146100cd578063f5811447146100ea575b600080fd5b6100596100f2565b604080516001600160a01b039092168252519081900360200190f35b61007d610101565b60408051602080825283518183015283519192839290830191858101910280838360005b838110156100b95781810151838201526020016100a1565b505050509050019250505060405180910390f35b610059600480360360208110156100e357600080fd5b5035610163565b61005961018a565b6002546001600160a01b031681565b6060600080548060200260200160405190810160405280929190818152602001828054801561015957602002820191906000526020600020905b81546001600160a01b0316815260019091019060200180831161013b575b5050505050905090565b6000818154811061017057fe5b6000918252602090912001546001600160a01b0316905081565b6000806040516101999061023c565b604051809103906000f0801580156101b5573d6000803e3d6000fd5b50600080546001810182559080527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630180546001600160a01b0383166001600160a01b0319909116811790915560408051918252519192507f8a8cc462d00726e0f8c031dd2d6b9dcdf0794fb27a88579830dadee27d43ea7c919081900360200190a15090565b60e6806102498339019056fe608060405234801561001057600080fd5b50600a60005560c2806100246000396000f3fe6080604052348015600f57600080fd5b5060043610603c5760003560e01c8063209652551460415780633fa4f2451460595780635524107714605f575b600080fd5b6047607b565b60408051918252519081900360200190f35b60476081565b607960048036036020811015607357600080fd5b50356087565b005b60005490565b60005481565b60005556fea2646970667358221220c02f1ed198466f8bef3522b04a8062d21b93c3a52833b90ea2b3fdc7f2804eb864736f6c63430006020033a26469706673582212204defe01ac55c92a5c61ce192054b8e304baf691a5f7f879c7a56243b4411d02164736f6c63430006020033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c806336b6228814610051578063a39fac1214610075578063ca98362b146100cd578063f5811447146100ea575b600080fd5b6100596100f2565b604080516001600160a01b039092168252519081900360200190f35b61007d610101565b60408051602080825283518183015283519192839290830191858101910280838360005b838110156100b95781810151838201526020016100a1565b505050509050019250505060405180910390f35b610059600480360360208110156100e357600080fd5b5035610163565b61005961018a565b6002546001600160a01b031681565b6060600080548060200260200160405190810160405280929190818152602001828054801561015957602002820191906000526020600020905b81546001600160a01b0316815260019091019060200180831161013b575b5050505050905090565b6000818154811061017057fe5b6000918252602090912001546001600160a01b0316905081565b6000806040516101999061023c565b604051809103906000f0801580156101b5573d6000803e3d6000fd5b50600080546001810182559080527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630180546001600160a01b0383166001600160a01b0319909116811790915560408051918252519192507f8a8cc462d00726e0f8c031dd2d6b9dcdf0794fb27a88579830dadee27d43ea7c919081900360200190a15090565b60e6806102498339019056fe608060405234801561001057600080fd5b50600a60005560c2806100246000396000f3fe6080604052348015600f57600080fd5b5060043610603c5760003560e01c8063209652551460415780633fa4f2451460595780635524107714605f575b600080fd5b6047607b565b60408051918252519081900360200190f35b60476081565b607960048036036020811015607357600080fd5b50356087565b005b60005490565b60005481565b60005556fea2646970667358221220c02f1ed198466f8bef3522b04a8062d21b93c3a52833b90ea2b3fdc7f2804eb864736f6c63430006020033a26469706673582212204defe01ac55c92a5c61ce192054b8e304baf691a5f7f879c7a56243b4411d02164736f6c63430006020033",
+  "sourceMap": "138:491:1:-:0;;;293:67;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;320:5:1;:18;;-1:-1:-1;;;;;;320:18:1;;;328:10;320:18;;;;;344:3;:11;;;;;-1:-1:-1;;;;;350:5:1;;;;344:11;;;;;;138:491;;;;;;",
+  "deployedSourceMap": "138:491:1:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;138:491:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;228:18;;;:::i;:::-;;;;-1:-1:-1;;;;;228:18:1;;;;;;;;;;;;;;364:97;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:100:-1;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;364:97:1;;;;;;;;;;;;;;;;;166:33;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;166:33:1;;:::i;465:162::-;;;:::i;228:18::-;;;-1:-1:-1;;;;;228:18:1;;:::o;364:97::-;409:16;440;433:23;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;433:23:1;;;;;;;;;;;;;;;;;;;;;;;364:97;:::o;166:33::-;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;166:33:1;;-1:-1:-1;166:33:1;:::o;465:162::-;506:7;521:15;539:13;;;;;:::i;:::-;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;-1:-1;558:16:1;27:10:-1;;39:1;23:18;;45:23;;558:30:1;;;;;;;-1:-1:-1;;;;;558:30:1;;-1:-1:-1;;;;;;558:30:1;;;;;;;;599:23;;;;;;;521:31;;-1:-1:-1;599:23:1;;;;;;558:30;599:23;;;465:162;;:::o;138:491::-;;;;;;;;:::o",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.6.2;\n\nimport './Auction.sol';\n// import '@openzeppelin/contracts/access/Ownable.sol';\n\ncontract AuctionFactory {\n  Auction[] public auctionAddresses;\n  address private owner;\n  address public wtf;\n\n  event AuctionCreated(Auction auction);\n\n  constructor() public {\n    owner = msg.sender;\n    wtf = owner;\n  }\n\n  function getAddresses() public view returns (Auction[] memory) {\n    return auctionAddresses;\n  }\n\n  function createAuction() public returns (address) {\n    Auction auction = new Auction();\n    auctionAddresses.push(auction);\n    emit AuctionCreated(auction);\n  }\n}\n",
+  "sourcePath": "/Users/michaelmueller/code/consensys-bootcamp/gloom/contracts/AuctionFactory.sol",
+  "ast": {
+    "absolutePath": "/Users/michaelmueller/code/consensys-bootcamp/gloom/contracts/AuctionFactory.sol",
+    "exportedSymbols": {
+      "AuctionFactory": [
+        89
+      ]
+    },
+    "id": 90,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 32,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:1"
+      },
+      {
+        "absolutePath": "/Users/michaelmueller/code/consensys-bootcamp/gloom/contracts/Auction.sol",
+        "file": "./Auction.sol",
+        "id": 33,
+        "nodeType": "ImportDirective",
+        "scope": 90,
+        "sourceUnit": 31,
+        "src": "57:23:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [
+          30
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 89,
+        "linearizedBaseContracts": [
+          89
+        ],
+        "name": "AuctionFactory",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "ca98362b",
+            "id": 36,
+            "name": "auctionAddresses",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 89,
+            "src": "166:33:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_storage",
+              "typeString": "contract Auction[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 34,
+                "name": "Auction",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 30,
+                "src": "166:7:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_Auction_$30",
+                  "typeString": "contract Auction"
+                }
+              },
+              "id": 35,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "166:9:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_storage_ptr",
+                "typeString": "contract Auction[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 38,
+            "name": "owner",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 89,
+            "src": "203:21:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 37,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "203:7:1",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "constant": false,
+            "functionSelector": "36b62288",
+            "id": 40,
+            "name": "wtf",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 89,
+            "src": "228:18:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 39,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "228:7:1",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 44,
+            "name": "AuctionCreated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 43,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 42,
+                  "indexed": false,
+                  "name": "auction",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 44,
+                  "src": "272:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_Auction_$30",
+                    "typeString": "contract Auction"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 41,
+                    "name": "Auction",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 30,
+                    "src": "272:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Auction_$30",
+                      "typeString": "contract Auction"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "271:17:1"
+            },
+            "src": "251:38:1"
+          },
+          {
+            "body": {
+              "id": 56,
+              "nodeType": "Block",
+              "src": "314:46:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 50,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 47,
+                      "name": "owner",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 38,
+                      "src": "320:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 48,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -15,
+                        "src": "328:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 49,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "328:10:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "320:18:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 51,
+                  "nodeType": "ExpressionStatement",
+                  "src": "320:18:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 54,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 52,
+                      "name": "wtf",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 40,
+                      "src": "344:3:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 53,
+                      "name": "owner",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 38,
+                      "src": "350:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "344:11:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 55,
+                  "nodeType": "ExpressionStatement",
+                  "src": "344:11:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 57,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 45,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "304:2:1"
+            },
+            "returnParameters": {
+              "id": 46,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "314:0:1"
+            },
+            "scope": 89,
+            "src": "293:67:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 65,
+              "nodeType": "Block",
+              "src": "427:34:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 63,
+                    "name": "auctionAddresses",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 36,
+                    "src": "440:16:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_storage",
+                      "typeString": "contract Auction[] storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 62,
+                  "id": 64,
+                  "nodeType": "Return",
+                  "src": "433:23:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "a39fac12",
+            "id": 66,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAddresses",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 58,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "385:2:1"
+            },
+            "returnParameters": {
+              "id": 62,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 61,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 66,
+                  "src": "409:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_memory_ptr",
+                    "typeString": "contract Auction[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "contractScope": null,
+                      "id": 59,
+                      "name": "Auction",
+                      "nodeType": "UserDefinedTypeName",
+                      "referencedDeclaration": 30,
+                      "src": "409:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Auction_$30",
+                        "typeString": "contract Auction"
+                      }
+                    },
+                    "id": 60,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "409:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_storage_ptr",
+                      "typeString": "contract Auction[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "408:18:1"
+            },
+            "scope": 89,
+            "src": "364:97:1",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 87,
+              "nodeType": "Block",
+              "src": "515:112:1",
+              "statements": [
+                {
+                  "assignments": [
+                    72
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 72,
+                      "name": "auction",
+                      "nodeType": "VariableDeclaration",
+                      "overrides": null,
+                      "scope": 87,
+                      "src": "521:15:1",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Auction_$30",
+                        "typeString": "contract Auction"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 71,
+                        "name": "Auction",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 30,
+                        "src": "521:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 76,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 74,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "539:11:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_creation_nonpayable$__$returns$_t_contract$_Auction_$30_$",
+                        "typeString": "function () returns (contract Auction)"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 73,
+                        "name": "Auction",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 30,
+                        "src": "543:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      }
+                    },
+                    "id": 75,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "539:13:1",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Auction_$30",
+                      "typeString": "contract Auction"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "521:31:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 80,
+                        "name": "auction",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 72,
+                        "src": "580:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 77,
+                        "name": "auctionAddresses",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 36,
+                        "src": "558:16:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_storage",
+                          "typeString": "contract Auction[] storage ref"
+                        }
+                      },
+                      "id": 79,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "558:21:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_contract$_Auction_$30_$returns$__$",
+                        "typeString": "function (contract Auction)"
+                      }
+                    },
+                    "id": 81,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "558:30:1",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 82,
+                  "nodeType": "ExpressionStatement",
+                  "src": "558:30:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 84,
+                        "name": "auction",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 72,
+                        "src": "614:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      ],
+                      "id": 83,
+                      "name": "AuctionCreated",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 44,
+                      "src": "599:14:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_contract$_Auction_$30_$returns$__$",
+                        "typeString": "function (contract Auction)"
+                      }
+                    },
+                    "id": 85,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "599:23:1",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 86,
+                  "nodeType": "EmitStatement",
+                  "src": "594:28:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "f5811447",
+            "id": 88,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createAuction",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 67,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "487:2:1"
+            },
+            "returnParameters": {
+              "id": 70,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 69,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 88,
+                  "src": "506:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 68,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "506:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "505:9:1"
+            },
+            "scope": 89,
+            "src": "465:162:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 90,
+        "src": "138:491:1"
+      }
+    ],
+    "src": "32:598:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/michaelmueller/code/consensys-bootcamp/gloom/contracts/AuctionFactory.sol",
+    "exportedSymbols": {
+      "AuctionFactory": [
+        89
+      ]
+    },
+    "id": 90,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 32,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:1"
+      },
+      {
+        "absolutePath": "/Users/michaelmueller/code/consensys-bootcamp/gloom/contracts/Auction.sol",
+        "file": "./Auction.sol",
+        "id": 33,
+        "nodeType": "ImportDirective",
+        "scope": 90,
+        "sourceUnit": 31,
+        "src": "57:23:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [
+          30
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 89,
+        "linearizedBaseContracts": [
+          89
+        ],
+        "name": "AuctionFactory",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "ca98362b",
+            "id": 36,
+            "name": "auctionAddresses",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 89,
+            "src": "166:33:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_storage",
+              "typeString": "contract Auction[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 34,
+                "name": "Auction",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 30,
+                "src": "166:7:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_Auction_$30",
+                  "typeString": "contract Auction"
+                }
+              },
+              "id": 35,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "166:9:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_storage_ptr",
+                "typeString": "contract Auction[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 38,
+            "name": "owner",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 89,
+            "src": "203:21:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 37,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "203:7:1",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "constant": false,
+            "functionSelector": "36b62288",
+            "id": 40,
+            "name": "wtf",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 89,
+            "src": "228:18:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 39,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "228:7:1",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 44,
+            "name": "AuctionCreated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 43,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 42,
+                  "indexed": false,
+                  "name": "auction",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 44,
+                  "src": "272:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_Auction_$30",
+                    "typeString": "contract Auction"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 41,
+                    "name": "Auction",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 30,
+                    "src": "272:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Auction_$30",
+                      "typeString": "contract Auction"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "271:17:1"
+            },
+            "src": "251:38:1"
+          },
+          {
+            "body": {
+              "id": 56,
+              "nodeType": "Block",
+              "src": "314:46:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 50,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 47,
+                      "name": "owner",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 38,
+                      "src": "320:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 48,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -15,
+                        "src": "328:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 49,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "328:10:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "320:18:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 51,
+                  "nodeType": "ExpressionStatement",
+                  "src": "320:18:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 54,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 52,
+                      "name": "wtf",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 40,
+                      "src": "344:3:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 53,
+                      "name": "owner",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 38,
+                      "src": "350:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "344:11:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 55,
+                  "nodeType": "ExpressionStatement",
+                  "src": "344:11:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 57,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 45,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "304:2:1"
+            },
+            "returnParameters": {
+              "id": 46,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "314:0:1"
+            },
+            "scope": 89,
+            "src": "293:67:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 65,
+              "nodeType": "Block",
+              "src": "427:34:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 63,
+                    "name": "auctionAddresses",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 36,
+                    "src": "440:16:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_storage",
+                      "typeString": "contract Auction[] storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 62,
+                  "id": 64,
+                  "nodeType": "Return",
+                  "src": "433:23:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "a39fac12",
+            "id": 66,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAddresses",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 58,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "385:2:1"
+            },
+            "returnParameters": {
+              "id": 62,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 61,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 66,
+                  "src": "409:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_memory_ptr",
+                    "typeString": "contract Auction[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "contractScope": null,
+                      "id": 59,
+                      "name": "Auction",
+                      "nodeType": "UserDefinedTypeName",
+                      "referencedDeclaration": 30,
+                      "src": "409:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Auction_$30",
+                        "typeString": "contract Auction"
+                      }
+                    },
+                    "id": 60,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "409:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_storage_ptr",
+                      "typeString": "contract Auction[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "408:18:1"
+            },
+            "scope": 89,
+            "src": "364:97:1",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 87,
+              "nodeType": "Block",
+              "src": "515:112:1",
+              "statements": [
+                {
+                  "assignments": [
+                    72
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 72,
+                      "name": "auction",
+                      "nodeType": "VariableDeclaration",
+                      "overrides": null,
+                      "scope": 87,
+                      "src": "521:15:1",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Auction_$30",
+                        "typeString": "contract Auction"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 71,
+                        "name": "Auction",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 30,
+                        "src": "521:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 76,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 74,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "539:11:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_creation_nonpayable$__$returns$_t_contract$_Auction_$30_$",
+                        "typeString": "function () returns (contract Auction)"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 73,
+                        "name": "Auction",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 30,
+                        "src": "543:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      }
+                    },
+                    "id": 75,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "539:13:1",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Auction_$30",
+                      "typeString": "contract Auction"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "521:31:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 80,
+                        "name": "auction",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 72,
+                        "src": "580:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 77,
+                        "name": "auctionAddresses",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 36,
+                        "src": "558:16:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_contract$_Auction_$30_$dyn_storage",
+                          "typeString": "contract Auction[] storage ref"
+                        }
+                      },
+                      "id": 79,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "558:21:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_contract$_Auction_$30_$returns$__$",
+                        "typeString": "function (contract Auction)"
+                      }
+                    },
+                    "id": 81,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "558:30:1",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 82,
+                  "nodeType": "ExpressionStatement",
+                  "src": "558:30:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 84,
+                        "name": "auction",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 72,
+                        "src": "614:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_Auction_$30",
+                          "typeString": "contract Auction"
+                        }
+                      ],
+                      "id": 83,
+                      "name": "AuctionCreated",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 44,
+                      "src": "599:14:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_contract$_Auction_$30_$returns$__$",
+                        "typeString": "function (contract Auction)"
+                      }
+                    },
+                    "id": 85,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "599:23:1",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 86,
+                  "nodeType": "EmitStatement",
+                  "src": "594:28:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "f5811447",
+            "id": 88,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createAuction",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 67,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "487:2:1"
+            },
+            "returnParameters": {
+              "id": 70,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 69,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 88,
+                  "src": "506:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 68,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "506:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "505:9:1"
+            },
+            "scope": 89,
+            "src": "465:162:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 90,
+        "src": "138:491:1"
+      }
+    ],
+    "src": "32:598:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.2+commit.bacdbe57.Emscripten.clang"
+  },
+  "networks": {
+    "13": {
+      "events": {
+        "0x8a8cc462d00726e0f8c031dd2d6b9dcdf0794fb27a88579830dadee27d43ea7c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "contract Auction",
+              "name": "auction",
+              "type": "address"
+            }
+          ],
+          "name": "AuctionCreated",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x353aDDb0f3c37Fdc782620323b1892533720A3c8",
+      "transactionHash": "0xcee168827b582c5cc0efbabf2bdbce81f4697e9bcc26b63f710d5dc1701377c8"
+    }
+  },
+  "schemaVersion": "3.3.1",
+  "updatedAt": "2020-11-14T15:35:46.277Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

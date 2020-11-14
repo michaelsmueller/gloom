@@ -8,7 +8,20 @@ module.exports = {
     development: {
       host: '127.0.0.1',
       port: 8545,
-      network_id: '*', // Match any network id
+      network_id: '13', // Match any network id
+    },
+  },
+  compilers: {
+    solc: {
+      version: '0.6.2',
+      parser: "solcjs",  // Leverages solc-js purely for speedy parsing
+      settings: {
+        optimizer: {
+          enabled: true,
+          // runs: 1500,
+        },
+        evmVersion: 'istanbul',
+      },
     },
   },
 };

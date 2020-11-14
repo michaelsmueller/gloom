@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useWeb3Context } from 'web3-react';
 import SimpleStorageContract from './contracts/SimpleStorage.json';
 
-export default function MyComponent() {
+export default function Auction() {
   const context = useWeb3Context();
   const [storageValue, setStorageValue] = useState(0);
   const [contract, setContract] = useState(null);
@@ -26,7 +26,7 @@ export default function MyComponent() {
     const { networkId } = context;
     console.log('networkId', networkId);
     const deployedNetwork = SimpleStorageContract.networks[networkId];
-    console.log('Address in MyComponent', deployedNetwork.address);
+    console.log('Address in Auction', deployedNetwork.address);
     const instance = new web3.eth.Contract(SimpleStorageContract.abi, deployedNetwork && deployedNetwork.address);
     console.log('instance', instance);
     setContract(instance);
@@ -45,7 +45,8 @@ export default function MyComponent() {
 
   return (
     <div>
-      success <p>{account}</p>
+      <h1>Auction</h1>
+      <p>account: {account}</p>
       storage {storageValue}
       <button type='button' onClick={instantiate}>
         instantiate contract
