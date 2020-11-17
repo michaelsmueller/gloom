@@ -1,46 +1,35 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { useWeb3Context } from 'web3-react';
+import { Contract } from '@ethersproject/contracts';
+import { Web3Provider } from '@ethersproject/providers';
 import SimpleStorageContract from './contracts/SimpleStorage.json';
 
 export default function Auction() {
   const context = useWeb3Context();
   const [storageValue, setStorageValue] = useState(0);
   const [contract, setContract] = useState(null);
-
   useEffect(() => context.setFirstValidConnector(['MetaMask']), [context]);
-
   const { active, error, account } = context;
 
   if (!active && !error) return <div>loading</div>;
   if (error) return <div>error</div>;
 
   const instantiate = () => {
-    console.log('instantiate');
-
-    const web3 = context.library;
-    console.log('web3', web3);
-    console.log(Object.keys(web3));
-    console.log(web3.eth);
-
+    const ethers = context.library;
     const { networkId } = context;
-    console.log('networkId', networkId);
     const deployedNetwork = SimpleStorageContract.networks[networkId];
-    console.log('Address in Auction', deployedNetwork.address);
-    const instance = new web3.eth.Contract(SimpleStorageContract.abi, deployedNetwork && deployedNetwork.address);
+    const provider = new Web3Provider(ethers.provider);
+    const signer = provider.getSigner();
+    const instance = new Contract(deployedNetwork.address, SimpleStorageContract.abi, signer);
     console.log('instance', instance);
     setContract(instance);
   };
 
   const runExample = async () => {
-    console.log('run example');
-    await contract.methods.set(13).send({ from: context.account });
-
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
-
-    // Update state with the result.
-    setStorageValue(response);
+    await contract.set(13);
+    const response = await contract.get();
+    setStorageValue(JSON.parse(response));
   };
 
   return (
