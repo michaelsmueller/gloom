@@ -1,0 +1,43 @@
+[{
+    "symbol": "AAVE",
+    "name": "Aave",
+    "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+    "logo": "aave_32.png"
+  },
+  {
+    "symbol": "COMP",
+    "name": "Compound",
+    "address": "0xc00e94cb662c3520282e6f5717214004a7f26888",
+    "logo": "comp_32.png"
+  },
+  {
+    "symbol": "LINK",
+    "name": "ChainLink",
+    "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+    "logo": "link_28.png"
+  },
+  {
+    "symbol": "MKR",
+    "name": "Maker",
+    "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+    "logo": "mkr_35.png"
+  },
+  {
+    "symbol": "SNX",
+    "name": "Synthetix",
+    "address": "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
+    "logo": "snx_32.png"
+  },
+  {
+    "symbol": "UNI",
+    "name": "Uniswap",
+    "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    "logo": "uniswap_32.png"
+  },
+  {
+    "symbol": "YFI",
+    "name": "Yearn Finance",
+    "address": "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
+    "logo": "yfi_32.png"
+  }
+]
