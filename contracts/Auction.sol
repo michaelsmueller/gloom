@@ -5,20 +5,17 @@ pragma solidity ^0.6.2;
 // import '@openzeppelin/upgrades/contracts/Initializable.sol';
 
 contract Auction {
-  // address public clone;
-  // string public name;
-  uint public value;
+  address public seller;
+  uint public tokenAmount;
+  address public tokenContractAddress;
+  uint public startDateTime;
+  uint public endDateTime;
 
-  constructor() public {
-    // name = _name;
-    value = 10;
-  }
-
-  function setValue(uint _value) public {
-    value = _value;
-  }
-
-  function getValue() public view returns (uint) {
-    return value;
+  constructor(uint _tokenAmount, address _tokenContractAddress, uint _startDateTime, uint _endDateTime) public {
+    seller = msg.sender;
+    tokenAmount = _tokenAmount;
+    tokenContractAddress = _tokenContractAddress;
+    startDateTime = _startDateTime;
+    endDateTime = _endDateTime;
   }
 }

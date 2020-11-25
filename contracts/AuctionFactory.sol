@@ -20,8 +20,8 @@ contract AuctionFactory {
     return auctionAddresses;
   }
 
-  function createAuction() public returns (address) {
-    Auction auction = new Auction();
+  function createAuction(uint tokenAmount, address tokenContractAddress, uint startDateTime, uint endDateTime) public returns (address) {
+    Auction auction = new Auction(tokenAmount, tokenContractAddress, startDateTime, endDateTime);
     auctionAddresses.push(auction);
     emit AuctionCreated(auction);
   }
