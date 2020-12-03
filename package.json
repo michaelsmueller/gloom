@@ -3,10 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "react": "16.11.0",
-    "react-dom": "16.11.0",
+    "@ethersproject/contracts": "^5.0.8",
+    "@ethersproject/providers": "^5.0.17",
+    "@ethersproject/units": "^5.0.8",
+    "@web3-react/core": "^6.1.1",
+    "@web3-react/injected-connector": "^6.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "^6.11.3",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.2.0",
-    "web3": "1.2.2"
+    "styled-components": "^5.2.1",
+    "styled-components.macro": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
