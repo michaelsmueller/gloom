@@ -9,7 +9,7 @@ contract AuctionFactory {
   Auction[] public auctionAddresses;
   address public admin;
 
-  event AuctionCreated(Auction auction, address indexed seller);
+  event AuctionCreated(Auction indexed auction, address indexed seller);
 
   constructor() public {
     admin = msg.sender;
