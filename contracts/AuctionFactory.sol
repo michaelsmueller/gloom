@@ -6,8 +6,9 @@ import './Auction.sol';
 // import '@openzeppelin/contracts/access/Ownable.sol';
 
 contract AuctionFactory {
-  Auction[] private auctionAddresses;
   address public admin;
+  Auction[] private auctionAddresses;
+  mapping(address => Auction) public auctionBy;
 
   event AuctionCreated(Auction indexed auction, address indexed seller);
 
@@ -19,6 +20,10 @@ contract AuctionFactory {
     return auctionAddresses;
   }
 
+  function getAuctionBy() external view returns (Auction) {
+    return auctionBy[msg.sender];
+  }
+
   function createAuction(
     uint256 tokenAmount,
     address tokenContractAddress,
@@ -28,6 +33,7 @@ contract AuctionFactory {
     address seller = msg.sender;
     Auction auction = new Auction(seller, tokenAmount, tokenContractAddress, startDateTime, endDateTime);
     auctionAddresses.push(auction);
+    auctionBy[seller] = auction;
     emit AuctionCreated(auction, seller);
   }
 }
