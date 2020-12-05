@@ -20,35 +20,35 @@ contract Auction {
     uint256 bid;
     uint256 bidDateTime;
   }
-
   mapping(address => Bidder) public bidders;
   address[] public bidderAddresses;
 
+  event ReceiveSellerDeposit(address indexed seller, uint256 indexed sellerDeposit);
+  event InvitedBidder(address indexed bidder);
+
   constructor(
+    address _seller,
     uint256 _tokenAmount,
     address _tokenContractAddress,
     uint256 _startDateTime,
     uint256 _endDateTime
   ) public {
     factory = msg.sender;
+    seller = _seller;
     tokenAmount = _tokenAmount;
     tokenContractAddress = _tokenContractAddress;
     startDateTime = _startDateTime;
     endDateTime = _endDateTime;
   }
 
-  function registerSeller(address _seller) external {
-    require(msg.sender == factory, 'Sender not authorized');
-    seller = _seller;
-  }
-
   function receiveSellerDeposit() external payable {
     // consider using initialize or other modifier to preven selling from changing deposit
     require(msg.sender == seller, 'Sender not authorized');
     sellerDeposit = msg.value;
+    emit ReceiveSellerDeposit(seller, sellerDeposit);
   }
 
-  function getBidders() public view returns (address[] memory) {
+  function getBidders() external view returns (address[] memory) {
     return bidderAddresses;
   }
 
@@ -60,6 +60,7 @@ contract Auction {
     require(!isInvitedBidder(bidderAddress), 'Bidder already exists');
     bidders[bidderAddress].isInvited = true;
     bidderAddresses.push(bidderAddress);
+    emit InvitedBidder(bidderAddress);
   }
 
   function setupBidders(uint256 _bidderDeposit, address[] calldata _bidderAddresses) external {

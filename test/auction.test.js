@@ -29,16 +29,9 @@ contract('Auction', accounts => {
       tokenContractAddress,
       startDateTime,
       endDateTime,
-      seller,
+      { from: seller },
     );
   };
-
-  it('should not allow someone other than factory to register seller', async () => {
-    await truffleAssert.reverts(
-      auctionInstance.registerSeller(attacker, { from: attacker }),
-      'Sender not authorized',
-    );
-  });
 
   it('should accept a deposit from seller', async () => {
     await auctionInstance.receiveSellerDeposit({ from: seller, value: DEPOSIT });

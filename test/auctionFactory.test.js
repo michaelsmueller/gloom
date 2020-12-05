@@ -22,7 +22,7 @@ contract('AuctionFactory', accounts => {
       tokenContractAddress,
       startDateTime,
       endDateTime,
-      seller,
+      { from: seller },
     );
   };
 
