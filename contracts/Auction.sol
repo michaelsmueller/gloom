@@ -17,14 +17,19 @@ contract Auction {
   struct Bidder {
     bool isInvited;
     uint256 balance;
-    uint256 bid;
-    uint256 bidDateTime;
+    bytes32 bidCommit;
+    uint64 bidCommitBlock;
+    bool bidRevealed;
   }
+
   mapping(address => Bidder) public bidders;
   address[] public bidderAddresses;
 
-  event ReceiveSellerDeposit(address indexed seller, uint256 indexed sellerDeposit);
-  event InvitedBidder(address indexed bidder);
+  event LogSellerDepositReceived(address indexed seller, uint256 sellerDeposit);
+  event LogBidderDepositReceived(address indexed bidder, uint256 bidderDeposit);
+  event LogBidderInvited(address indexed bidder);
+  event LogBidCommitted(address indexed bidder, bytes32 bidHash, uint256 bidCommitBlock);
+  event LogBidRevealed(address indexed bidder, bytes32 bidHex, bytes32 salt);
 
   constructor(
     address _seller,
@@ -42,14 +47,22 @@ contract Auction {
   }
 
   function receiveSellerDeposit() external payable {
-    // consider using initialize or other modifier to preven selling from changing deposit
+    // consider using initialize or other modifier to prevent seller from changing deposit
     require(msg.sender == seller, 'Sender not authorized');
     sellerDeposit = msg.value;
-    emit ReceiveSellerDeposit(seller, sellerDeposit);
+    emit LogSellerDepositReceived(msg.sender, msg.value);
+  }
+
+  function getDateTimes() external view returns (uint256, uint256) {
+    return (startDateTime, endDateTime);
   }
 
   function getBidders() external view returns (address[] memory) {
     return bidderAddresses;
+  }
+
+  function getBidderDeposit() external view returns (uint256) {
+    return bidderDeposit;
   }
 
   function isInvitedBidder(address bidderAddress) private view returns (bool) {
@@ -60,7 +73,7 @@ contract Auction {
     require(!isInvitedBidder(bidderAddress), 'Bidder already exists');
     bidders[bidderAddress].isInvited = true;
     bidderAddresses.push(bidderAddress);
-    emit InvitedBidder(bidderAddress);
+    emit LogBidderInvited(bidderAddress);
   }
 
   function setupBidders(uint256 _bidderDeposit, address[] calldata _bidderAddresses) external {
@@ -69,5 +82,36 @@ contract Auction {
     for (uint256 i = 0; i < _bidderAddresses.length; i++) {
       inviteBidder(_bidderAddresses[i]);
     }
+  }
+
+  function receiveBidderDeposit() private {
+    // consider using initialize or other modifier to prevent bidder from changing deposit
+    require(msg.value == bidderDeposit, 'Deposit is not required amount');
+    bidders[msg.sender].balance += msg.value;
+    emit LogBidderDepositReceived(msg.sender, msg.value);
+  }
+
+  function commitBid(bytes32 dataHash) private {
+    bidders[msg.sender].bidCommit = dataHash;
+    bidders[msg.sender].bidCommitBlock = uint64(block.number);
+    bidders[msg.sender].bidRevealed = false;
+    emit LogBidCommitted(msg.sender, bidders[msg.sender].bidCommit, bidders[msg.sender].bidCommitBlock);
+  }
+
+  function submitBid(bytes32 dataHash) external payable {
+    require(isInvitedBidder(msg.sender), 'Sender not authorized');
+    receiveBidderDeposit();
+    commitBid(dataHash);
+  }
+
+  function getSaltedHash(bytes32 data, bytes32 salt) public view returns (bytes32) {
+    return keccak256(abi.encodePacked(address(this), data, salt));
+  }
+
+  function revealBid(bytes32 bidHex, bytes32 salt) external {
+    require(bidders[msg.sender].bidRevealed == false, 'Bid already revealed');
+    bidders[msg.sender].bidRevealed = true;
+    require(getSaltedHash(bidHex, salt) == bidders[msg.sender].bidCommit, 'Revealed hash does not match');
+    emit LogBidRevealed(msg.sender, bidHex, salt);
   }
 }

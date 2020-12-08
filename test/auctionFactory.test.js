@@ -1,12 +1,7 @@
 const AuctionFactory = artifacts.require('AuctionFactory');
 const Auction = artifacts.require('Auction');
 const truffleAssert = require('truffle-assertions');
-const {
-  tokenAmount,
-  tokenContractAddress,
-  startDateTime,
-  endDateTime,
-} = require('../data/testData');
+const { tokenAmount, tokenContractAddress, startDateTime, endDateTime } = require('../data/testData');
 
 contract('AuctionFactory', accounts => {
   const admin = accounts[0];
@@ -17,13 +12,9 @@ contract('AuctionFactory', accounts => {
   });
 
   const createAuction = async () => {
-    return await factoryInstance.createAuction(
-      tokenAmount,
-      tokenContractAddress,
-      startDateTime,
-      endDateTime,
-      { from: seller },
-    );
+    return await factoryInstance.createAuction(tokenAmount, tokenContractAddress, startDateTime, endDateTime, {
+      from: seller,
+    });
   };
 
   it('should should set msg.sender as admin', async () => {
@@ -34,7 +25,7 @@ contract('AuctionFactory', accounts => {
   it('should create an auction', async () => {
     const tx = await createAuction();
     const { auction } = tx.logs[0].args;
-    truffleAssert.eventEmitted(tx, 'AuctionCreated', event => {
+    truffleAssert.eventEmitted(tx, 'LogAuctionCreated', event => {
       return event.auction === auction && event.seller === seller;
     });
   });

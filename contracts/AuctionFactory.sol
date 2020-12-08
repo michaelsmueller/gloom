@@ -10,7 +10,7 @@ contract AuctionFactory {
   Auction[] private auctionAddresses;
   mapping(address => Auction) public auctionBy;
 
-  event AuctionCreated(Auction indexed auction, address indexed seller);
+  event LogAuctionCreated(Auction indexed auction, address indexed seller);
 
   constructor() public {
     admin = msg.sender;
@@ -34,6 +34,6 @@ contract AuctionFactory {
     Auction auction = new Auction(seller, tokenAmount, tokenContractAddress, startDateTime, endDateTime);
     auctionAddresses.push(auction);
     auctionBy[seller] = auction;
-    emit AuctionCreated(auction, seller);
+    emit LogAuctionCreated(auction, seller);
   }
 }
