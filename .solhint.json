@@ -2,7 +2,7 @@
   "extends": "solhint:recommended",
   "plugins": ["prettier"],
   "rules": {
-    "compiler-version": ["error", "^0.6.2"],
+    "compiler-version": ["error", "^0.5.3"],
     "prettier/prettier": "warn",
     "avoid-throw": "off",
     "avoid-suicide": "error",

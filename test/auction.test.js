@@ -1,14 +1,10 @@
 const AuctionFactory = artifacts.require('AuctionFactory');
 const Auction = artifacts.require('Auction');
 const truffleAssert = require('truffle-assertions');
-const {
-  tokenAmount,
-  tokenContractAddress,
-  startDateTime,
-  endDateTime,
-} = require('../data/testData');
+const { tokenAmount, tokenContractAddress, startDateTime, endDateTime } = require('../data/testData');
 
 contract('Auction', accounts => {
+  let factoryInstance, logicAddress, auctionInstance;
   const admin = accounts[0];
   const seller = accounts[1];
   const bidder1 = accounts[2];
@@ -18,13 +14,16 @@ contract('Auction', accounts => {
 
   beforeEach(async () => {
     factoryInstance = await AuctionFactory.new({ from: admin });
+    logicInstance = await Auction.deployed();
+    logicAddress = logicInstance.address;
     const tx = await createAuction();
-    const { auction } = tx.logs[0].args;
+    const { auction } = tx.logs[1].args;
     auctionInstance = await Auction.at(auction);
   });
 
   const createAuction = async () => {
     return await factoryInstance.createAuction(
+      logicAddress,
       tokenAmount,
       tokenContractAddress,
       startDateTime,

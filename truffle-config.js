@@ -13,14 +13,16 @@ module.exports = {
   },
   compilers: {
     solc: {
-      version: '0.6.2',
+      version: '0.5.3',
+      // version: '0.6.2',
       parser: 'solcjs', // Leverages solc-js purely for speedy parsing
       settings: {
         optimizer: {
           enabled: true,
           // runs: 1500,
         },
-        evmVersion: 'istanbul',
+        // evmVersion: 'istanbul',
+        evmVersion: 'constantinople',
       },
     },
   },

@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.2;
+pragma solidity ^0.5.3;
 
-// import '@openzeppelin/contracts/proxy/Initializable.sol';
-// import '@openzeppelin/upgrades/contracts/Initializable.sol';
+import '@openzeppelin/upgrades/contracts/Initializable.sol';
 
-contract Auction {
+// import '@openzeppelin/contracts/access/AccessControl.sol';
+
+contract Auction is Initializable {
   address public factory;
   address public seller;
   uint256 public sellerDeposit;
@@ -13,6 +14,8 @@ contract Auction {
   address public tokenContractAddress;
   uint256 public startDateTime;
   uint256 public endDateTime;
+
+  // bytes32 public constant SELLER_ROLE = keccak256('SELLER_ROLE');
 
   struct Bidder {
     bool isInvited;
@@ -31,19 +34,26 @@ contract Auction {
   event LogBidCommitted(address indexed bidder, bytes32 bidHash, uint256 bidCommitBlock);
   event LogBidRevealed(address indexed bidder, bytes32 bidHex, bytes32 salt);
 
-  constructor(
+  function initialize(
     address _seller,
     uint256 _tokenAmount,
     address _tokenContractAddress,
     uint256 _startDateTime,
     uint256 _endDateTime
-  ) public {
+  ) public initializer {
+    // Ownable.initialize(_seller);
+    // _setupRole(SELLER_ROLE, _seller);
     factory = msg.sender;
     seller = _seller;
     tokenAmount = _tokenAmount;
     tokenContractAddress = _tokenContractAddress;
     startDateTime = _startDateTime;
     endDateTime = _endDateTime;
+  }
+
+  function specialThing() public pure returns (uint256) {
+    // require(hasRole(SELLER_ROLE, msg.sender), 'Caller is not seller');
+    return 420;
   }
 
   function receiveSellerDeposit() external payable {

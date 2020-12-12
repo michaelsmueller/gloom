@@ -1,3 +1,3 @@
 # Gloom Clore
 
-Transactions out of the light of day.
+Transactions outside the light of day.

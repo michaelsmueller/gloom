@@ -1,6 +1,6 @@
 {
   "editor.formatOnSave": true,
-  "solidity.compileUsingRemoteVersion": "v0.6.2+commit.bacdbe57",
+  "solidity.compileUsingRemoteVersion": "v0.5.3+commit.10d17f24",
   "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
   "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false, 
 }
