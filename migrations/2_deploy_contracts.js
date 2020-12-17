@@ -1,10 +1,12 @@
 const Auction = artifacts.require('./Auction.sol');
 const AuctionFactory = artifacts.require('AuctionFactory.sol');
+const MikeToken = artifacts.require('MikeToken.sol');
 
 // const { deployProxy } = require('@openzeppelin/truffle-upgrades');
 
-module.exports = async function (deployer) {
+module.exports = function (deployer) {
   // await deployProxy(AuctionFactory, [], { deployer, initializer: 'initialize' });
-  await deployer.deploy(Auction);
-  await deployer.deploy(AuctionFactory);
+  deployer.deploy(Auction);
+  deployer.deploy(AuctionFactory);
+  deployer.deploy(MikeToken);
 };

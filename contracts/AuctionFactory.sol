@@ -8,9 +8,12 @@ import './Auction.sol';
 contract AuctionFactory is ProxyFactory {
   address public admin;
   address[] private auctionAddresses;
+  mapping(address => bool) public auctionExists;
   mapping(address => address) public auctionBy;
+  mapping(address => address) public auctionInvited;
 
   event LogAuctionCreated(address indexed auction, address indexed seller);
+  event LogBidderRegistered(address indexed auction, address indexed bidder);
 
   constructor() public {
     admin = msg.sender;
@@ -22,6 +25,10 @@ contract AuctionFactory is ProxyFactory {
 
   function getAuctionBy() external view returns (address) {
     return auctionBy[msg.sender];
+  }
+
+  function getAuctionInvited() external view returns (address) {
+    return auctionInvited[msg.sender];
   }
 
   function createAuction(
@@ -43,7 +50,14 @@ contract AuctionFactory is ProxyFactory {
       );
     address auction = deployMinimal(logic, payload);
     auctionAddresses.push(auction);
+    auctionExists[auction] = true;
     auctionBy[seller] = auction;
     emit LogAuctionCreated(auction, seller);
+  }
+
+  function registerBidder(address bidder, address auction) external {
+    require(auctionExists[auction], 'Sender not authorized');
+    auctionInvited[bidder] = auction;
+    emit LogBidderRegistered(auction, bidder);
   }
 }
