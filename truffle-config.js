@@ -1,15 +1,18 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const path = require('path');
-const dotenv = require('dotenv');
-dotenv.config();
-const { MNEMONIC, PROJECT_ID } = process.env;
+// const dotenv = require('dotenv');
+// dotenv.config();
+// const { MNEMONIC, PROJECT_ID } = process.env;
+
+const mnemonic = 'CENSORED';
+
+// console.log('__dirname', __dirname);
+
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // to customize your Truffle configuration!
   contracts_build_directory: path.join(__dirname, '../gloom-interface/src/contracts'),
-  // contracts_directory: path.join(__dirname, '../gloom-interface/src/contracts'),
   // contracts_build_directory: path.join(__dirname, 'src/contracts'),
-  // contracts_directory: path.join(__dirname, 'client/src/contracts'),
   networks: {
     development: {
       host: '127.0.0.1',
@@ -18,7 +21,11 @@ module.exports = {
     },
     kovan: {
       provider: function () {
-        return new HDWalletProvider(MNEMONIC, `https://kovan.infura.io/v3/${PROJECT_ID}`);
+        return new HDWalletProvider(
+          mnemonic,
+          // `https://kovan.infura.io/v3/658ac54d0a4e41ddb61fbcaf9ab2c666`
+          `wss://kovan.infura.io/ws/v3/658ac54d0a4e41ddb61fbcaf9ab2c666`,
+        );
       },
       // gas: 80000000,
       network_id: 42,
@@ -26,7 +33,7 @@ module.exports = {
     },
     ropsten: {
       provider: function () {
-        return new HDWalletProvider(MNEMONIC, `https://ropsten.infura.io/v3/${PROJECT_ID}`);
+        return new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${PROJECT_ID}`);
       },
       network_id: 3, // Ropsten's id
       // provider: () => new HDWalletProvider(MNEMONIC, `http://localhost:8545`),

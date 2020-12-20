@@ -55,9 +55,9 @@ contract AuctionFactory is ProxyFactory {
     emit LogAuctionCreated(auction, seller);
   }
 
-  function registerBidder(address bidder, address auction) external {
-    require(auctionExists[auction], 'Sender not authorized');
-    auctionInvited[bidder] = auction;
-    emit LogBidderRegistered(auction, bidder);
+  function registerBidder(address bidder) external {
+    require(auctionExists[msg.sender], 'Sender not authorized');
+    auctionInvited[bidder] = msg.sender;
+    emit LogBidderRegistered(msg.sender, bidder);
   }
 }

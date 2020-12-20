@@ -1,14 +1,23 @@
 const AuctionFactory = artifacts.require('AuctionFactory');
 const Auction = artifacts.require('Auction');
 const truffleAssert = require('truffle-assertions');
-const { tokenAmount, tokenContractAddress, startDateTime, endDateTime } = require('../data/testData');
+const { BN } = web3.utils;
 
 contract('AuctionFactory', accounts => {
   let factoryInstance, logicInstance, logicAddress;
   const admin = accounts[0];
   const seller = accounts[1];
+  const bidder = accounts[2];
+  const DEPOSIT = web3.utils.toWei('1', 'ether');
+  const TOKENS = new BN(100);
+  const DECIMALS = new BN(18);
+  const TEN = new BN(10);
+  const tokenAmount = TOKENS.mul(TEN.pow(DECIMALS));
+  const tokenContractAddress = '0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e'; // YFI
+  const startDateTime = 1609488000000; // 1 Jan 2020 8:00 UTC
+  const endDateTime = 1612166400000; // 1 Feb 2020 8:00 UTC
 
-  beforeEach(async () => {
+  before(async () => {
     factoryInstance = await AuctionFactory.new({ from: admin });
     logicInstance = await Auction.deployed();
     logicAddress = logicInstance.address;
@@ -25,7 +34,7 @@ contract('AuctionFactory', accounts => {
     );
   };
 
-  it('should should set msg.sender as admin', async () => {
+  it('should set msg.sender as admin', async () => {
     const factoryAdmin = await factoryInstance.admin.call();
     assert.equal(factoryAdmin, admin, 'factory deployer is not admin');
   });
@@ -41,9 +50,19 @@ contract('AuctionFactory', accounts => {
     const tx = await createAuction();
     let createdAuction;
     truffleAssert.eventEmitted(tx, 'LogAuctionCreated', event => {
-      return (createdAuction = event.auction);
+      createdAuction = event.auction;
+      return event;
     });
     const addresses = await factoryInstance.getAddresses();
     assert.isTrue(addresses.includes(createdAuction));
+  });
+
+  it('should register bidder when bidder is set up at auction instance', async () => {
+    await createAuction();
+    const addresses = await factoryInstance.getAddresses();
+    const auctionInstance = await Auction.at(addresses[0]);
+    await auctionInstance.setupBidders(DEPOSIT, [bidder], { from: seller });
+    const isInvited = await factoryInstance.getAuctionInvited({ from: bidder });
+    assert(isInvited);
   });
 });
