@@ -14,6 +14,10 @@ Gloom lets you conduct a private auction of ERC-20 tokens. The process is as fol
 4. **Deliver**: seller and winning bidder deliver tokens and payment, respectively, to the escrow contract.
 5. **Withdraw**: seller and winning bidder withdraw proceeds and tokens, respectively, from the escrow contract. Everyone withdraws their deposits from the auction contract.
 
+## Video demo
+
+[Video demo walkthrough](https://vimeo.com/493971676)
+
 ## Requirements
 
 You will need the following to install and launch Gloom Core (my version noted):
