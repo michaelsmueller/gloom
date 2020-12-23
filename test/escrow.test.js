@@ -25,7 +25,9 @@ contract('Escrow', accounts => {
     mikeToken = await MikeToken.deployed();
     escrowInstance = await Escrow.new({ from: auction });
     await mikeToken.transfer(seller, tokenAmount, { from: admin });
-    await escrowInstance.initialize(seller, buyer, tokenAmount, mikeToken.address, WINNING_BID_HEX_PADDED);
+    await escrowInstance.initialize(seller, buyer, tokenAmount, mikeToken.address, WINNING_BID_HEX_PADDED, {
+      from: auction,
+    });
     await mikeToken.approve(escrowInstance.address, tokenAmount, { from: seller });
   });
 
@@ -81,6 +83,7 @@ contract('Escrow', accounts => {
   });
 
   it('should allow seller to withdraw winning bid payment', async () => {
+    await escrowInstance.startWithdraw({ from: auction });
     const tx = await escrowInstance.sellerWithdraw({ from: seller });
     let amount;
     truffleAssert.eventEmitted(tx, 'LogSellerWithdrew', event => {
@@ -91,6 +94,7 @@ contract('Escrow', accounts => {
   });
 
   it('should allow buyer to withdraw tokens', async () => {
+    await escrowInstance.startWithdraw({ from: auction });
     const tx = await escrowInstance.buyerWithdraw({ from: buyer });
     let amount;
     truffleAssert.eventEmitted(tx, 'LogBuyerWithdrew', event => {

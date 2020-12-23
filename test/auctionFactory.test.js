@@ -14,8 +14,6 @@ contract('AuctionFactory', accounts => {
   const TEN = new BN(10);
   const tokenAmount = TOKENS.mul(TEN.pow(DECIMALS));
   const tokenContractAddress = '0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e'; // YFI
-  const startDateTime = 1609488000000; // 1 Jan 2020 8:00 UTC
-  const endDateTime = 1612166400000; // 1 Feb 2020 8:00 UTC
 
   before(async () => {
     factoryInstance = await AuctionFactory.new({ from: admin });
@@ -24,14 +22,7 @@ contract('AuctionFactory', accounts => {
   });
 
   const createAuction = async () => {
-    return await factoryInstance.createAuction(
-      logicAddress,
-      tokenAmount,
-      tokenContractAddress,
-      startDateTime,
-      endDateTime,
-      { from: seller },
-    );
+    return await factoryInstance.createAuction(logicAddress, tokenAmount, tokenContractAddress, { from: seller });
   };
 
   it('should set msg.sender as admin', async () => {
@@ -53,16 +44,21 @@ contract('AuctionFactory', accounts => {
       createdAuction = event.auction;
       return event;
     });
-    const addresses = await factoryInstance.getAddresses();
+    const addresses = await factoryInstance.getAddresses({ from: admin });
     assert.isTrue(addresses.includes(createdAuction));
   });
 
   it('should register bidder when bidder is set up at auction instance', async () => {
     await createAuction();
-    const addresses = await factoryInstance.getAddresses();
+    const addresses = await factoryInstance.getAddresses({ from: admin });
     const auctionInstance = await Auction.at(addresses[0]);
     await auctionInstance.setupBidders(DEPOSIT, [bidder], { from: seller });
     const isInvited = await factoryInstance.getAuctionInvited({ from: bidder });
     assert(isInvited);
+  });
+
+  it('should allow admin to pause to stop ability to deploy new auctions', async () => {
+    await factoryInstance.pauseFactory({ from: admin });
+    await truffleAssert.reverts(createAuction(), 'Pausable: paused');
   });
 });
