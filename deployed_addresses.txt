@@ -1,0 +1,89 @@
+Starting migrations...
+======================
+> Network name:    'kovan'
+> Network id:      42
+> Block gas limit: 12487794 (0xbe8c72)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x9651ebc5cdf40702aba6c32607473f7527f191f947273e41cc2e3cbec8d94fe0
+   > Blocks: 1            Seconds: 4
+   > contract address:    0x33524ba31dB00D82791Fc8B9f1710F195f11A002
+   > block number:        22708323
+   > block timestamp:     1608602112
+   > account:             0xef0D7Caf53A996ED2C7B81BD9323F7506D33f606
+   > balance:             7.12689326
+   > gas used:            162255 (0x279cf)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0032451 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:           0.0032451 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'Auction'
+   -------------------
+   > transaction hash:    0x20379d83411fd16b55a2ba28a7df6a2e7fffbc5357a6dea3dc0915487c36c79b
+   > Blocks: 1            Seconds: 8
+   > contract address:    0xb41101725ce619dd5c19F92EE48F9948e7cb8087
+   > block number:        22708326
+   > block timestamp:     1608602132
+   > account:             0xef0D7Caf53A996ED2C7B81BD9323F7506D33f606
+   > balance:             7.03820702
+   > gas used:            4391971 (0x430423)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.08783942 ETH
+
+
+   Deploying 'AuctionFactory'
+   --------------------------
+   > transaction hash:    0x6f4ff61f01425549f94b98570caa07dbf7d3b63cf937b1c10a644229ae1218e4
+   > Blocks: 0            Seconds: 4
+   > contract address:    0xF2dfCA76568cBD31B652cFF7631fD7F7f8b44304
+   > block number:        22708327
+   > block timestamp:     1608602140
+   > account:             0xef0D7Caf53A996ED2C7B81BD9323F7506D33f606
+   > balance:             6.98103834
+   > gas used:            2858434 (0x2b9dc2)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.05716868 ETH
+
+
+   Deploying 'MikeToken'
+   ---------------------
+   > transaction hash:    0xddc80754b43714af40860859012b8ee0e86daea3611313854b52ee6b13cff22c
+   > Blocks: 1            Seconds: 8
+   > contract address:    0xE7973F9170764728dA92cD062Db97a5eA42AB600
+   > block number:        22708329
+   > block timestamp:     1608602152
+   > account:             0xef0D7Caf53A996ED2C7B81BD9323F7506D33f606
+   > balance:             6.96100924
+   > gas used:            1001455 (0xf47ef)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0200291 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:           0.1650372 ETH
+
+
+Summary
+=======
+> Total deployments:   4
+> Final cost:          0.1682823 ETH
