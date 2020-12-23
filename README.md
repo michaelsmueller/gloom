@@ -1,6 +1,8 @@
+![Gloom logo](https://github.com/michaelsmueller/gloom-interface/blob/main/public/gloom-logo-large.png?raw=true)
+
 # Gloom Interface
 
-_Transactions outside the light of day._
+_Transactions outside the light of day_
 
 ## Overview
 
@@ -12,6 +14,10 @@ Gloom lets you conduct a private auction of ERC-20 tokens. The process is as fol
 4. **Deliver**: seller and winning bidder deliver tokens and payment, respectively, to the escrow contract.
 5. **Withdraw**: seller and winning bidder withdraw proceeds and tokens, respectively, from the escrow contract. Everyone withdraws their deposits from the auction contract.
 
+## Video demo
+
+[Video demo walkthrough](https://vimeo.com/493971676)
+
 ## Requirements
 
 You will need the following to install and interact with Gloom Interface (my version noted):
@@ -22,7 +28,7 @@ You will need the following to install and interact with Gloom Interface (my ver
 
 ## Installation
 
-Clone this repository and the Gloom Core repository into the same parent directory.
+Clone this repository and the [Gloom Core](https://github.com/michaelsmueller/gloom-core) repository into the same parent directory.
 
 If you are running on a local blockchain instance (Gloom CLI) you will need to first follow the instructions in the Gloom Core repository before launching the interface.
 
@@ -46,7 +52,7 @@ To use Gloom, first you need to get some tokens to auction, either MIKE tokens (
 
 ### MIKE tokens on localhost (Ganache)
 
-If you are running Ganache CLI blockchain locally, the migration in Gloom Core will mint 1 million **MIKE** ERC-20 tokens into the deployer address (first Ganache address, `accounts[0]`). Gloom Interface will read the contract address of this locally deployed token, and you may test auction them. To see them in your MetaMask wallet you will need to add them manually there:
+If you are running Ganache CLI blockchain locally, the migration in [Gloom Core](https://github.com/michaelsmueller/gloom-core) will mint 1 million **MIKE** ERC-20 tokens into the deployer address (first Ganache address, `accounts[0]`). Gloom Interface will read the contract address of this locally deployed token, and you may test auction them. To see them in your MetaMask wallet you will need to add them manually there:
 
 1. Copy the MikeToken contract address that appears in the console after executing `truffle migrate --reset`
 2. In MetaMask select Add Token (at bottom of Assets), Cutom Token, and paste the contract address, add the symbol MIKE and specify 18 decimals.
