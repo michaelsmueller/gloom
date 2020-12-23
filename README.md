@@ -1,6 +1,8 @@
-# Gloom Core
+![Gloom logo](https://github.com/michaelsmueller/gloom-interface/blob/main/public/gloom-logo-large.png?raw=true)
 
-_Transactions outside the light of day._
+# Gloom (core)
+
+_Transactions outside the light of day_
 
 ## Overview
 
@@ -23,7 +25,7 @@ You will need the following to install and launch Gloom Core (my version noted):
 
 ## Installation
 
-Clone this repository and the Gloom Interface repository into the same parent directory.
+Clone this repository and the [Gloom Interface](https://github.com/michaelsmueller/gloom-interface) repository into the same parent directory.
 
 ### Gloom Core installation
 
@@ -51,7 +53,7 @@ truffle migrate --reset
 
 The contract ABIs build into the `gloom-interface/src/contracts` directory.
 
-Please see the Gloom Interface repository for instructions on installing and launching the interface.
+Please see the [Gloom Interface](https://github.com/michaelsmueller/gloom-interface) repository for instructions on installing and launching the interface.
 
 ## Auction MIKE tokens on localhost (Ganache)
 
@@ -63,7 +65,7 @@ If you are running Ganache CLI blockchain locally, the migration in Gloom Core w
 
 ## Auction tokens on testnet (Kovan)
 
-The contracts have been deployed to the **Kovan** testnet (see `deployed_addresses.txt`). See the Gloom Interface repository for info on acquiring Kovan testnet ERC-20 tokens and interacting with the frontend.
+The contracts have been deployed to the **Kovan** testnet (see `deployed_addresses.txt`). See the [Gloom Interface](https://github.com/michaelsmueller/gloom-interface) for info on acquiring Kovan testnet ERC-20 tokens and interacting with the frontend.
 
 ## Testing
 
