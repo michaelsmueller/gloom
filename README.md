@@ -1,6 +1,6 @@
 ![Gloom logo](https://github.com/michaelsmueller/gloom-interface/blob/main/public/gloom-logo-large.png?raw=true)
 
-# Gloom Interface
+# Gloom
 
 _Transactions outside the light of day_
 
@@ -20,23 +20,55 @@ Gloom lets you conduct a private auction of ERC-20 tokens. The process is as fol
 
 ## Requirements
 
-You will need the following to install and interact with Gloom Interface (my version noted):
+You will need the following (my version noted):
 
 - Node (recommended v14.15.1)
 - Yarn (recommended v1.22.10)
-- [Metamask](https://metamask.io/) wallet (browser extension)
+- Ganache CLI (v6.12.1)
+- Truffle (v5.1.58)
+- [MetaMask](https://metamask.io/) wallet (browser extension)
 
 ## Installation
 
-Clone this repository and the [Gloom Core](https://github.com/michaelsmueller/gloom-core) repository into the same parent directory.
+Clone this mono repo, which contains both the Gloom Core (Solidity smart contracts) and Gloom Interface (React app) projects. If you are running a local blockchain instance (Ganache CLI) you will need to install Gloom Core before launching Gloom Interface. If you want to run the interface off the Kovan testnet, skip to Gloom Interface installation.
 
-If you are running on a local blockchain instance (Gloom CLI) you will need to first follow the instructions in the Gloom Core repository before launching the interface.
+### Gloom Core installation
+
+In the Gloom Core directory, create a `.env` file (check `.env-example` as an example) and save your mnemonic and Infura project id.
+
+```
+cd gloom-core
+touch .env
+```
+
+Install package dependencies:
+
+```
+yarn install
+```
+
+To run on localhost, launch Ganache CLI on network / chain id 1337 (it should default to port 8545):
+
+```
+ganache-cli --networkId 1337 --chainId 1337
+```
+
+I recommend launching Ganache with the same mnemonic every time (add `-m "put your mnemonic words here"`) so you can track your test ETH, test tokens, etc.
+
+Migrate the contracts to the Ganache blockchain running locally (on `http://127.0.0.1:8545`):
+
+```
+truffle migrate --reset
+```
+
+The contract ABIs build into the `../gloom-interface/src/contracts` directory.
 
 ### Gloom Interface installation
 
 In the Gloom Interface directory, install package dependencies:
 
 ```
+cd gloom-interface
 yarn install
 ```
 
@@ -46,19 +78,21 @@ To launch on localhost, run:
 yarn start
 ```
 
+Unless you have configured a different port, the React app should launch on `http://localhost:3000/`
+
 ## Get testnet tokens
 
-To use Gloom, first you need to get some tokens to auction, either MIKE tokens (local blockchain) or testnet tokens (Kovan blockchain):
+To use Gloom, you will need to get some tokens to auction, either MIKE tokens (local blockchain) or testnet tokens (Kovan blockchain):
 
-### MIKE tokens on localhost (Ganache)
+### Auction MIKE tokens on localhost (Ganache)
 
-If you are running Ganache CLI blockchain locally, the migration in [Gloom Core](https://github.com/michaelsmueller/gloom-core) will mint 1 million **MIKE** ERC-20 tokens into the deployer address (first Ganache address, `accounts[0]`). Gloom Interface will read the contract address of this locally deployed token, and you may test auction them. To see them in your MetaMask wallet you will need to add them manually there:
+If you are running the Ganache blockchain locally, the migration in Gloom Core will mint 1 million **MIKE** ERC-20 tokens into the deployer address (first Ganache address, `accounts[0]`). Gloom Interface will read the contract address of this locally deployed token, and you may test auction them. To see them in your MetaMask wallet you will need to add them manually there:
 
 1. Copy the MikeToken contract address that appears in the console after executing `truffle migrate --reset`
 2. In MetaMask select Add Token (at bottom of Assets), Cutom Token, and paste the contract address, add the symbol MIKE and specify 18 decimals.
 3. You should now see the 1 million MIKE token balance in your account. You will need to repeat the same procedure for other accounts (e.g. if you auction the tokens to another address) to see them there as well.
 
-### Testnet tokens (Kovan)
+### Auction tokens on testnet (Kovan)
 
 The contracts have been deployed to the **Kovan** testnet (see `deployed_addresses.txt`). The contract ABIs in the `src/contracts` directory should allow you to interact on Kovan.
 
@@ -82,7 +116,7 @@ To see your testnet ERC-20 tokens in MetaMask, you will need to add them as Cust
 
 ## Using Gloom
 
-Now that you have some tokens, go to the homepage and conduct an auction:
+Now that you have some tokens, go to the [app homepage](http://localhost:3000/) and conduct an auction:
 
 - From the homa, click Auction tokens
 - Click TOKEN from the menu, enter the number and type of token and Set up auction.
@@ -120,3 +154,12 @@ As seller:
 As winning bidder:
 
 - Click WITHDRAW tab and Withdraw deposit & tokens (2 transactions, recover deposit and transfer tokens). Tokens are yours! (Check wallet)
+
+## Smart contract tests
+
+To run the smart contract tests, from the Gloom Core directory run:
+
+```
+cd gloom-core
+truffle test
+```

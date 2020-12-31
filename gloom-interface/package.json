@@ -1,5 +1,5 @@
 {
-  "name": "gloom",
+  "name": "gloom-interface",
   "version": "1.0.0",
   "private": true,
   "dependencies": {

@@ -1,14 +1,8 @@
 {
-<<<<<<< HEAD
-  "name": "gloom",
+  "name": "gloom-core",
   "version": "1.0.0",
-  "description": "Conduct an invite-only auction of ERC-20 tokens.",
-  "repository": "https://github.com/michaelsmueller/gloom",
-  "author": "Michael Mueller <hello@michaelmueller.dev>",
-  "license": "MIT",
-  "private": true
-}
-=======
+  "private": true,
+
   "scripts": {
     "solhint": "solhint -f table contracts/**/*.sol",
     "prettier": "prettier --write 'contracts/**/*.sol'",
@@ -33,4 +27,3 @@
     "truffle-assertions": "^0.9.2"
   }
 }
->>>>>>> gloom-core/main
