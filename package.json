@@ -1,0 +1,9 @@
+{
+  "name": "gloom",
+  "version": "1.0.0",
+  "description": "Conduct an invite-only auction of ERC-20 tokens.",
+  "repository": "https://github.com/michaelsmueller/gloom",
+  "author": "Michael Mueller <hello@michaelmueller.dev>",
+  "license": "MIT",
+  "private": true
+}
